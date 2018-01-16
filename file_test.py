@@ -13,6 +13,8 @@ IN="in_hdd/"
 OUT="out_hdd/"
 END="end_hdd/"
 
+CHECK_TIME = 500
+
 class Rechercheur:
     
     def __init__ (self,qdd,rep):
@@ -30,7 +32,7 @@ class Rechercheur:
 				if self.verif_hdd(magic.from_file(self.repin+f)):
 					self.qdd.put(f)
 					print "Rechercheur : " + f
-			time.sleep(300)
+			time.sleep(CHECK_TIME)
 
     def verif_hdd(self,typ):
 		test = False
