@@ -32,9 +32,7 @@ class Rechercheur:
 
     def verif_hdd(self,typ):
         test = False
-        #print typ.find("DOS/MBR")
-        if typ.find("DOS/MBR") >=0:
-            #print typ
+        if typ.find("DOS/MBR") >=0 or typ.find("filesystem") >= 0:
             test = True
         return test
 
