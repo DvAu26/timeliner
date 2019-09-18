@@ -13,8 +13,9 @@ CHECK_TIME = 500
 
 class Rechercheur:
 
-    def __init__ (self,qdd,rep,repo):
+    def __init__ (self,qdd,qmm,rep,repo):
         self.qdd = qdd
+        self.qmem = qmm
         self.repin = rep
         self.repout = repo
         self.terminer = False
@@ -29,6 +30,10 @@ class Rechercheur:
                 if self.verif_hdd(magic.from_file(self.repin+f)) and self.verif_plaso(f):
                     self.qdd.put(f)
                     print("Rechercheur : " + f)
+                else:
+                     # gros bourrin a affiner...
+                     self.qmm.put(f)
+                     print("Timemem : " + f)
             time.sleep(CHECK_TIME)
 
     def verif_hdd(self,typ):
