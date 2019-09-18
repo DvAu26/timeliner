@@ -38,4 +38,5 @@ class Plaseur:
         _thread.start_new_thread(self.run,())
 
     def stop (self):
+        print("STOP-Plaseur")
         self.terminer = True

@@ -12,11 +12,14 @@ from rechercheur import Rechercheur
 from timeliner import Timeliner
 from plaseur import Plaseur
 
-IN="in_hdd/"
-OUT="out_hdd/"
-END="end_hdd/"
+IN="/mnt/Timeliner/in/"
+OUT="/mnt/Timeliner/out/"
+END="/mnt/Timeliner/end/"
 
 if __name__ == '__main__':
+
+    '''Initiation des queues'''
+
     queue_fic = queue.Queue()
     queue_dd = queue.Queue()
     queue_plaso = queue.Queue()
@@ -27,7 +30,7 @@ if __name__ == '__main__':
         if not os.path.exists(f):
             os.makedirs(f)
 
-    r = Rechercheur(queue_dd,IN)
+    r = Rechercheur(queue_dd,IN,OUT)
     p = Plaseur(queue_dd,queue_plaso,IN,OUT)
     c = Timeliner(queue_plaso,IN,OUT,END)
 
