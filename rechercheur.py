@@ -32,7 +32,7 @@ class Rechercheur:
                     print("Rechercheur : " + f)
                 else:
                      # gros bourrin a affiner...
-                     self.qmm.put(f)
+                     self.qmem.put(f)
                      print("Timemem : " + f)
             time.sleep(CHECK_TIME)
 
