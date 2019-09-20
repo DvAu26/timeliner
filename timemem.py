@@ -57,11 +57,11 @@ class Timemem:
             if str(line).find("Suggested Profile(s)") >= 0:
                 # Line with profile(s)
                 profiles = str(line).split(",")
-                print("Suggested profile(s) : " + profiles)
+                print("Suggested profile(s) : " + str(profiles))
             if str(line).find("Service Pack") >= 0:
                 # Service pack number
                 serv_pack = str(line).split(":")
-                print("Service pack : " + serv_pack)
+                print("Service pack : " + str(serv_pack))
         return "Testing"
 
     def prof_tester (self, f, prof):
