@@ -47,12 +47,12 @@ class Timemem:
         self.terminer = True
 
     def profiler (self, f):
-        print("Profiler : " +f)
+        print("Profiler : " + str(f) + "\n ----- Imageinfo -----")
         p = subprocess.Popen(["vol.py","-f", self.repin+f , "imageinfo"], stdout=subprocess.PIPE)
         result = p.communicate()
-        # Opti with splitlines() directly
-        print(result)
-        lines_result = str(result).splitlines()
+        # Opti with split("\n")
+        print("##################" + str(result) + "#####################")
+        lines_result = str(result).split("\n")
         for line in lines_result:
             if str(line).find("Suggested Profile(s)") >= 0:
                 # Line with profile(s)
