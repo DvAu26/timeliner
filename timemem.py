@@ -47,7 +47,7 @@ class Timemem:
 
     def profiler (self, f):
         print("Profiler : " +f)
-        p = subprocess.Popen(["vol.py","-f", self.repout+f , "imageinfo"], stdout=subprocess.PIPE)
+        p = subprocess.Popen(["vol.py","-f", self.repin+f , "imageinfo"], stdout=subprocess.PIPE)
         result = p.communicate()
         # Opti with splitlines() directly
         print(result)
@@ -61,22 +61,20 @@ class Timemem:
                 # Service pack number
                 serv_pack = str(line).split(":")
                 print("Service pack : " + serv_pack)
-        return profiles[0]
 
     def prof_tester (self, f, prof):
         print("Profile tester : " +f)
         # Windows profile but linux and mac too.
         if str(prof).find("Win", "XP", "Vista") >= 0:
-            p = subprocess.Popen(["vol.py","-f", self.repout+f , "pslist"], stdout=subprocess.PIPE)
+            p = subprocess.Popen(["vol.py","-f", self.repin+f , "pslist"], stdout=subprocess.PIPE)
             result = p.communicate()
         else:
             # Linux ou Mac
             if str(prof).find("Linux") >= 0:
-                p = subprocess.Popen(["vol.py","-f", self.repout+f , "linux_pslist"], stdout=subprocess.PIPE)
+                p = subprocess.Popen(["vol.py","-f", self.repin+f , "linux_pslist"], stdout=subprocess.PIPE)
                 result = p.communicate()
             else:
                 # Mac
-                p = subprocess.Popen(["vol.py","-f", self.repout+f , "mac_pslist"], stdout=subprocess.PIPE)
+                p = subprocess.Popen(["vol.py","-f", self.repin+f , "mac_pslist"], stdout=subprocess.PIPE)
                 result = p.communicate()
         print("result")
-        return true
