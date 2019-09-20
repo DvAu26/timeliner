@@ -29,7 +29,7 @@ class Timemem:
     def run2 (self,f):
         print("Timeliner Memory : " + f)
         profil = profiler(f)
-        if str(profil).find("NON-PROFILE") <> 0:
+        if str(profil).find("NON-PROFILE") != 0:
             tester = prof_tester(f,profil)
             # shutil.move(self.repin+f,self.repend)
             # print("Le fichier : " + f + " est déplacé dans " + self.repout)
