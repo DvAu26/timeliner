@@ -29,15 +29,14 @@ class Timemem:
     def run2 (self,f):
         print("Timeliner Memory : " + f)
         profil = profiler(f)
-        '''p = subprocess.Popen(["vol.py","-w", self.repout+f+".csv", self.repout+f+".plaso"], stdout=subprocess.PIPE)
-        result = p.communicate()
-        if str(result).find("Processing completed") >= 0:
-            shutil.move(self.repin+f,self.repend)
-            print("Le fichier : " + f + " est déplacé dans " + self.repout)
+        if str(profil).find("NON-PROFILE") <> 0:
+            tester = prof_tester(f,profil)
+            # shutil.move(self.repin+f,self.repend)
+            # print("Le fichier : " + f + " est déplacé dans " + self.repout)
         else:
             print("Aucun profil, le fichier n'est pas un dump de RAM exploitable")
             shutil.move(self.repin+f, self.repnok)
-            print("Le fichier : " + f + " est déplacé dans " + self.repnok)'''
+            print("Le fichier : " + f + " est déplacé dans " + self.repnok)
 
     def start (self):
         _thread.start_new_thread(self.run,())
@@ -50,9 +49,32 @@ class Timemem:
         print("Profiler : " +f)
         p = subprocess.Popen(["vol.py","-f", self.repout+f , "imageinfo"], stdout=subprocess.PIPE)
         result = p.communicate()
+        # Opti with splitlines() directly
         print(result)
-        '''if str(result).find("Processing completed") >= 0:
-            shutil.move(self.repin+f,self.repend)
-            print("Le fichier : " + f + " est déplacé dans " + self.repout)
+        lines_result = str(result).splitlines()
+        for line in lines_result:
+            if str(line).find("Suggested Profile(s)") >= 0:
+                # Line with profile(s)
+                profiles = str(line).split(",")
+                print("Suggested profile(s) : " + profiles)
+            if str(line).find("Service Pack") >= 0:
+                # Service pack number
+                serv_pack = str(line).split(":")
+                print("Service pack : " + serv_pack)
+
+    def prof_tester (self, f, prof):
+        print("Profile tester : " +f)
+        # Windows profile but linux and mac too.
+        if str(prof).find("Win", "XP", "Vista") >= 0:
+            p = subprocess.Popen(["vol.py","-f", self.repout+f , "pslist"], stdout=subprocess.PIPE)
+            result = p.communicate()
         else:
-            print("Une erreur est survenue pendant la génération du csv")'''
+            # Linux ou Mac
+            if str(prof).find("Linux") >= 0:
+                p = subprocess.Popen(["vol.py","-f", self.repout+f , "linux_pslist"], stdout=subprocess.PIPE)
+                result = p.communicate()
+            else:
+                # Mac
+                p = subprocess.Popen(["vol.py","-f", self.repout+f , "mac_pslist"], stdout=subprocess.PIPE)
+                result = p.communicate()
+        print("result")
