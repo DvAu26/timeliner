@@ -28,9 +28,9 @@ class Timemem:
 
     def run2 (self,f):
         print("Timeliner Memory : " + f)
-        profil = profiler(f)
+        profil = self.profiler(f)
         if str(profil).find("NON-PROFILE") != 0:
-            tester = prof_tester(f,profil)
+            tester = self.prof_tester(f,profil)
             # shutil.move(self.repin+f,self.repend)
             # print("Le fichier : " + f + " est déplacé dans " + self.repout)
         else:
@@ -61,6 +61,7 @@ class Timemem:
                 # Service pack number
                 serv_pack = str(line).split(":")
                 print("Service pack : " + serv_pack)
+         return profiles[0]
 
     def prof_tester (self, f, prof):
         print("Profile tester : " +f)
@@ -78,3 +79,4 @@ class Timemem:
                 p = subprocess.Popen(["vol.py","-f", self.repout+f , "mac_pslist"], stdout=subprocess.PIPE)
                 result = p.communicate()
         print("result")
+        return true
