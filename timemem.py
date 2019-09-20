@@ -31,7 +31,7 @@ class Timemem:
         profil = self.profiler(f)
         print(profil)
         if str(profil).find("NON-PROFILE") != 0:
-            print("tester = self.prof_tester("+f+","+profil+")")
+            print("tester = self.prof_tester("+str(f)+","+str(profil)+")")
             # shutil.move(self.repin+f,self.repend)
             # print("Le fichier : " + f + " est déplacé dans " + self.repout)
         else:
