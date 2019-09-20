@@ -52,7 +52,8 @@ class Timemem:
         result = p.communicate()
         # Opti with split("\n")
         print("######## RESULT ##########\n" + str(result) + "\n#####################")
-        lines_result = str(result).split('\n')
+        lines_result = str(result).split()
+        print("-----------\n"+str(lines_result)+"\n----------------")
         for line in lines_result:
             if str(line).find("Suggested Profile(s)") >= 0:
                 # Line with profile(s)
