@@ -51,17 +51,17 @@ class Timemem:
         p = subprocess.Popen(["vol.py","-f", self.repin+f , "imageinfo"], stdout=subprocess.PIPE)
         result = p.communicate()
         # Opti with split("\n")
-        print("##################" + str(result) + "#####################")
+        print("######## RESULT ##########\n" + str(result) + "\n#####################")
         lines_result = str(result).split("\n")
         for line in lines_result:
             if str(line).find("Suggested Profile(s)") >= 0:
                 # Line with profile(s)
                 profiles = str(line).split(",")
-                print("Suggested profile(s) : " + str(profiles))
+                print("===== Suggested profile(s) : " + str(profiles) + " ======")
             if str(line).find("Service Pack") >= 0:
                 # Service pack number
                 serv_pack = str(line).split(":")
-                print("Service pack : " + str(serv_pack))
+                print("\\\\\\\\\\\\\\\\\\\ Service pack : " + str(serv_pack) + " //////////////")
         return "Testing"
 
     def prof_tester (self, f, prof):
