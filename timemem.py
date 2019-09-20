@@ -66,7 +66,7 @@ class Timemem:
     def prof_tester (self, f, prof):
         print("Profile tester : " +f)
         # Windows profile but linux and mac too.
-        if str(prof).find("Win") >= 0 or str(prof).find.("Vista") >= 0:
+        if str(prof).find("Win") >= 0 or str(prof).find("Vista") >= 0:
             p = subprocess.Popen(["vol.py","-f", self.repin+f , "pslist"], stdout=subprocess.PIPE)
             result = p.communicate()
         else:
