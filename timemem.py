@@ -61,7 +61,7 @@ class Timemem:
                 # Service pack number
                 serv_pack = str(line).split(":")
                 print("Service pack : " + serv_pack)
-         return profiles[0]
+        return profiles[0]
 
     def prof_tester (self, f, prof):
         print("Profile tester : " +f)
