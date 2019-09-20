@@ -29,8 +29,9 @@ class Timemem:
     def run2 (self,f):
         print("Timeliner Memory : " + f)
         profil = self.profiler(f)
+        print(profil)
         if str(profil).find("NON-PROFILE") != 0:
-            tester = self.prof_tester(f,profil)
+            print("tester = self.prof_tester("+f+","+profil+")")
             # shutil.move(self.repin+f,self.repend)
             # print("Le fichier : " + f + " est déplacé dans " + self.repout)
         else:
@@ -65,7 +66,7 @@ class Timemem:
     def prof_tester (self, f, prof):
         print("Profile tester : " +f)
         # Windows profile but linux and mac too.
-        if str(prof).find("Win", "XP", "Vista") >= 0:
+        if str(prof).find("Win") >= 0 or str(prof)find.("Vista") >= 0:
             p = subprocess.Popen(["vol.py","-f", self.repin+f , "pslist"], stdout=subprocess.PIPE)
             result = p.communicate()
         else:
