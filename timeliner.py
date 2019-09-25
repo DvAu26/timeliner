@@ -31,6 +31,7 @@ class Timeliner:
         result = p.communicate()
         if str(result).find("Processing completed") >= 0:
             shutil.move(self.repin+f,self.repend)
+            os.remove(self.repin+f+".working")
             print("Le fichier : " + f + " est déplacé dans " + self.repout)
         else:
             print("Une erreur est survenue pendant la génération du csv")
