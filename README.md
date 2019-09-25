@@ -20,7 +20,7 @@ END
 MEM
 NOK
 
-IN -> Put your own dd file
+IN -> Put your own dd file or memory dump
 OUT -> you will have your plaso files and csv files (hdd and memory)
 END -> Moving the file at the end of the thread.
 MEM -> Moving the file at the end of the memory thread.
